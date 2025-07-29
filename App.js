@@ -1,23 +1,19 @@
-
-import { StyleSheet, View, TextInput, Button, FlatList } from 'react-native';
+import { StyleSheet, View, FlatList } from 'react-native';
 import { useState } from 'react';
 import GoalItem from './components/GoalItem';
 import GoalInput from './components/GoalInput';
 
 export default function App() {
-  const [enteredGoalText, setEnteredGoalText] = useState('');
+  
   const [goals, setGoals] = useState([]);
-  const goalInputHandler = (enteredText) => {
-    setEnteredGoalText(enteredText);
-  };
 
-  const addGoalHandler = () => {
+  const addGoalHandler = (enteredGoalText) => {
     setGoals((currentGoals) => [...currentGoals, enteredGoalText]);
   };
 
   return (
     <View style={styles.appContainer}>
-      <GoalInput onEnterGoalText={goalInputHandler} onAddGoal={addGoalHandler} />
+      <GoalInput onAddGoal={addGoalHandler} />
       <View style={styles.goalsContainer}>
         <FlatList
           data={goals}
