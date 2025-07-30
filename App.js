@@ -8,8 +8,17 @@ export default function App() {
   const [goals, setGoals] = useState([]);
 
   const addGoalHandler = (enteredGoalText) => {
-    setGoals((currentGoals) => [...currentGoals, enteredGoalText]);
+    setGoals((currentGoals) => [...currentGoals, {
+      text: enteredGoalText,
+      id: Math.random().toString(),
+    }]);
   };
+
+  const deleteGoalHandler = (id) => {
+    setGoals((currentGoals) => {
+      return currentGoals.filter((goal) => goal.id !== id);
+    });
+  }
 
   return (
     <View style={styles.appContainer}>
@@ -19,7 +28,7 @@ export default function App() {
           data={goals}
           renderItem={itemData => {
             return (
-              <GoalItem text={itemData.item} />
+              <GoalItem text={itemData.item.text} id={itemData.item.id} onDeleteItem={deleteGoalHandler}/>
             )
           }}
           keyExtractor={(item, index) => index}
