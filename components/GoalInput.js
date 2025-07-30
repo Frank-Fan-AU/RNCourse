@@ -1,4 +1,11 @@
-import { View, TextInput, StyleSheet, Button, Modal, Image } from "react-native";
+import {
+  View,
+  TextInput,
+  StyleSheet,
+  Button,
+  Modal,
+  Image,
+} from "react-native";
 import { useState } from "react";
 const GoalInput = (props) => {
   const [enteredGoalText, setEnteredGoalText] = useState("");
@@ -14,7 +21,10 @@ const GoalInput = (props) => {
   return (
     <Modal visible={props.visible} animationType="slide">
       <View style={styles.inputContainer}>
-      <Image source={require('../assets/images/Goal.png')} style={styles.image} />
+        <Image
+          source={require("../assets/images/Goal.png")}
+          style={styles.image}
+        />
         <TextInput
           placeholder="Enter the task"
           value={enteredGoalText}
@@ -23,14 +33,17 @@ const GoalInput = (props) => {
         />
         <View style={styles.buttonContainer}>
           <View style={styles.button}>
-            <Button title="Cancel" onPress={props.onCancel} />
+            <Button title="Cancel" onPress={props.onCancel} color={"#f31282"} />
           </View>
           <View style={styles.button}>
-            <Button title="Add Goal" onPress={addGoalHandler} />
+            <Button
+              title="Add Goal"
+              onPress={addGoalHandler}
+              color={"#b180f0"}
+            />
           </View>
         </View>
       </View>
-      
     </Modal>
   );
 };
@@ -43,21 +56,22 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: '#1e085a',
+    backgroundColor: "#1e085a",
   },
   image: {
     width: 100,
     height: 100,
     margin: 20,
-    alignSelf: 'center',
+    alignSelf: "center",
   },
   input: {
     borderWidth: 1,
-    borderColor: "#ccc",
+    borderColor: "#e4d0ff",
+    backgroundColor: "#e4d0ff",
     borderRadius: 5,
     width: "80%",
     padding: 16,
-    color: 'white',
+    color: "#120438",
   },
   buttonContainer: {
     flexDirection: "row",
